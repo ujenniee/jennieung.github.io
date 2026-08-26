@@ -2,6 +2,49 @@ import type { Project } from "@/lib/types";
 
 export const projects: Project[] = [
   {
+    slug: "preset-setup-accelerator",
+    title: "Preset Setup Accelerator",
+    tagline: "Batch imaging-setting changes across every preset on a transducer.",
+    description:
+      "A control on the ultrasound cart that applies an imaging setting across all presets tied to a transducer in one pass, replacing preset-by-preset manual configuration and cutting sales team setup time by 87%.",
+    date: "Aug. 2026",
+    featured: true,
+    proprietary: true,
+    outcomes: [
+      { metric: "87%", label: "Reduction in setup time" },
+      { metric: "One pass", label: "Instead of preset-by-preset edits" },
+      { metric: "On-cart", label: "Built into the system UI" },
+    ],
+    stack: ["C++", "UI Development", "Automation", "Validation Testing", "Ultrasound Imaging"],
+    links: {},
+    caseStudy: {
+      problem:
+        "Client-specific imaging conditions have to be applied consistently across every preset on a system. There was no way to do that in bulk — each preset on each transducer had to be opened and edited by hand with the same change. Across several transducers with dozens of presets each, that turned routine setup into hours of repetitive work, and every manual pass was a chance to miss one.",
+      approach: [
+        "Built a UI element on the ultrasound cart that scopes an imaging setting change to every preset associated with a selected transducer.",
+        "Designed the interaction to live inside the existing on-cart preset workflow, so no separate tool or external hardware is needed in the field.",
+        "Handled per-preset variation so a batch change applies cleanly across presets that don't share identical parameter sets.",
+        "Validated batch-applied settings against live scan models to confirm imaging behavior matched a manually configured preset.",
+      ],
+      decisions: [
+        {
+          title: "Transducer as the batch scope",
+          body: "Client conditions are almost always transducer-specific, so scoping the operation to a transducer's preset set matched how the team already reasons about configuration. The control needed no explanation to be useful.",
+        },
+        {
+          title: "On-cart UI instead of an external utility",
+          body: "Setup happens at the cart. Putting the control in the system UI meant it fit an existing workflow rather than adding a step that depends on a laptop, a service account, or someone who knows the tooling.",
+        },
+        {
+          title: "Consistency as the real win",
+          body: "Speed was the headline, but applying one change across every preset in a single operation also removes the silent failure mode — a missed preset that nobody notices until a clinician hits it mid-exam.",
+        },
+      ],
+      result:
+        "Setup time dropped by 87%. Applying a client-specific condition across a transducer's presets became a single operation instead of an afternoon of repetitive edits, letting the team spend setup time on clinical tasks rather than configuration.",
+    },
+  },
+  {
     slug: "legacy-restore",
     title: "Legacy Restore",
     tagline: "Version rollback for ultrasound imaging presets.",
@@ -13,8 +56,7 @@ export const projects: Project[] = [
     outcomes: [
       { metric: "~70%", label: "Faster sales demo setup" },
       { metric: "Side-by-side", label: "Preset comparison for demos" },
-      // TODO: add your estimated cost-avoidance figure per prevented line stop.
-      { metric: "TODO", label: "Cost avoided per prevented line stop" },
+      { metric: "Reversible", label: "Upgrades across software versions" },
     ],
     stack: ["Python", "C++", "SQL", "Database Design", "Validation Testing"],
     links: {},
