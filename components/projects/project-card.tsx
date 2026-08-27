@@ -91,17 +91,7 @@ function ProjectLink({
   label: string;
   icon: React.ComponentType<{ className?: string }>;
 }) {
-  if (!href) {
-    return (
-      <span
-        className="inline-flex cursor-not-allowed items-center gap-1.5 text-sm text-subtle-foreground"
-        title={`${label} link not added yet`}
-      >
-        <Lock className="size-3.5" />
-        {label}
-      </span>
-    );
-  }
+  if (!href) return null;
 
   return (
     <a

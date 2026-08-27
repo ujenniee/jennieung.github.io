@@ -88,6 +88,57 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "philips-delivery-tool",
+    title: "Philips Delivery Tool",
+    tagline: "One GUI for the entire preset delivery workflow — Git, PRs, docs, and array-level diffs.",
+    description:
+      "A Python GUI that wraps the Git CLI and GitHub REST API to collapse preset delivery — branch, commit, push, PR, reviewer assignment, Change Set Document, preflight — into a single reviewed workflow, with index-specific diffs for array-based JSON parameters.",
+    date: "June 2026",
+    featured: true,
+    proprietary: true,
+    outcomes: [
+      { metric: "Hours/week", label: "Of admin work reclaimed" },
+      { metric: "Index-level", label: "Diffs for array parameters" },
+      { metric: "One surface", label: "Replaces five tool context switches" },
+    ],
+    stack: ["Python", "Git", "GitHub REST API", "GUI Development", "JSON", "Automation"],
+    links: {},
+    caseStudy: {
+      problem:
+        "Once a transducer preset is optimized, the change has to land in the central repository for every ultrasound preset across transducers. Getting it there meant a long chain of manual steps: Git operations, a Change Set Document, a pull request, chasing approvals, then starting preflight. Engineers collectively lost hours every week to it. The same change was documented twice, once in the Change Set Document and again in the PR description. Reviewers were added by hand on every PR. And reviewing the change itself was the worst part — preset parameters live in large one- and multi-dimensional arrays, so standard diff tools report that a value changed without identifying which index it belongs to, leaving engineers counting array positions by hand.",
+      approach: [
+        "Built a Python GUI wrapping the Git CLI so branch creation, staging, commit, push, and pull all happen in one place.",
+        "Integrated the GitHub REST API to fetch repo collaborators, assign reviewers automatically, open pull requests, detect when the approval threshold is met, and start preflight.",
+        "Wrote a JSON diff layer that reports changes by parameter name and array index — including pointer type and pointer index — instead of raw value-level output.",
+        "Generated Change Set Documents and PR descriptions from the same parameter-change summary, eliminating the duplicate write-up.",
+      ],
+      decisions: [
+        {
+          title: "Centralize the delivery workflow in one GUI",
+          body: "Most preset delivery steps follow a predictable pattern that doesn't require engineering judgment, so wrapping them in a GUI removed the context switching between Git Bash, VS Code, GitHub, documentation folders, and browser tabs. It also made the process consistent across engineers, prevented common Git errors, and gave newer engineers a path to follow instead of tribal knowledge.",
+        },
+        {
+          title: "Keep engineers in control instead of automating every step",
+          body: "The tool never commits or delivers without confirmation. Engineers still review changed files before staging, select what to commit, edit the commit message, review generated summaries and PR descriptions, and decide whether to start preflight. Preset updates need engineering judgment — the goal was to remove the administrative overhead around review, not the review itself.",
+        },
+        {
+          title: "Generate both high-level and low-level change summaries",
+          body: "Different reviewers need different detail. The high-level summary gives scope — affected transducer, affected preset, changed parameter names, type of change — while the low-level summary carries exact value changes with pointer type and index. Producing both means a reviewer can skim or verify without asking someone to reconstruct the change.",
+        },
+        {
+          title: "Index-specific diffs for array-based parameters",
+          body: "This is the decision that addresses the sharpest pain point. Standard diffs show that an array value moved but not which parameter index it maps to, so engineers were counting positions manually. Surfacing the index directly makes large arrays transparent and removes the class of review error where an unintended parameter change slips past unnoticed.",
+        },
+        {
+          title: "Selective value restores during diff review",
+          body: "Real optimization work often produces a file where most changes are good and a few specific values or pointer indices are not. Allowing a restore at the individual value level — rather than accepting or rejecting a whole file — avoids sending engineers back to hand-edit JSON buried inside large arrays, which is exactly where mistakes happen.",
+        },
+      ],
+      result:
+        "Preset delivery went from a multi-tool chain to a single reviewed workflow. Engineers stopped counting array indices by hand, stopped writing the same change summary twice, and stopped manually assigning reviewers — while keeping approval over every step that requires judgment. The reclaimed hours went back to optimization work instead of administration.",
+    },
+  },
+  {
     slug: "abcmouth",
     title: "ABCMouth",
     tagline: "An accessible speech-learning platform for people traditional therapy leaves out.",
