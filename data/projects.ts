@@ -6,12 +6,12 @@ export const projects: Project[] = [
     title: "Preset Setup Accelerator",
     tagline: "Batch imaging-setting changes across every preset on a transducer.",
     description:
-      "A control on the ultrasound cart that applies an imaging setting across all presets tied to a transducer in one pass, replacing preset-by-preset manual configuration and cutting sales team setup time by 87%.",
+      "A control on the ultrasound cart that applies an imaging setting across all presets tied to a transducer in one pass, replacing preset-by-preset manual configuration and cutting preset configuration time by 87%.",
     date: "Aug. 2026",
     featured: true,
     proprietary: true,
     outcomes: [
-      { metric: "87%", label: "Reduction in setup time" },
+      { metric: "87%", label: "Reduction in preset configuration time" },
       { metric: "One pass", label: "Instead of preset-by-preset edits" },
       { metric: "On-cart", label: "Built into the system UI" },
     ],
@@ -41,7 +41,7 @@ export const projects: Project[] = [
         },
       ],
       result:
-        "Setup time dropped by 87%. Applying a client-specific condition across a transducer's presets became a single operation instead of an afternoon of repetitive edits, letting the team spend setup time on clinical tasks rather than configuration.",
+        "Preset configuration time dropped by 87%. Applying a client-specific condition across a transducer's presets became a single operation instead of an afternoon of repetitive edits, letting the team spend setup time on clinical tasks rather than configuration.",
     },
   },
   {
@@ -54,19 +54,19 @@ export const projects: Project[] = [
     featured: true,
     proprietary: true,
     outcomes: [
-      { metric: "~70%", label: "Faster sales demo setup" },
+      { metric: "~70%", label: "Faster preset demo setup workflow" },
       { metric: "Side-by-side", label: "Preset comparison for demos" },
       { metric: "Reversible", label: "Upgrades across software versions" },
     ],
-    stack: ["Python", "C++", "SQL", "Database Design", "Validation Testing"],
+    stack: ["Python", "C++", "SQL", "Database Design", "Automation", "Validation Testing"],
     links: {},
     caseStudy: {
       problem:
         "Ultrasound presets are tied to the software version they shipped with, so once a system upgraded there was no supported path back. That made every upgrade a one-way decision: if a clinician preferred the previous preset, or a new one underperformed, the old configuration was effectively gone. A single failing preset could stop a line while a fix was developed.",
       approach: [
-        "Designed an internal database and directory architecture that keeps legacy presets addressable per software version.",
-        "Built Python and C++ tooling to automate preset recovery and keep deployments consistent across imaging systems.",
-        "Added batch processing so a full preset set could be prepared in one pass instead of configured by hand.",
+        "Built a scalable database and directory architecture supporting storage, retrieval, and migration of historical preset configurations, addressable per software version.",
+        "Developed Python and C++ automation tools that streamlined preset recovery workflows and improved deployment consistency across imaging systems.",
+        "Introduced configuration management processes that cut demo setup workflow time by roughly 70% compared to preparing presets by hand.",
         "Validated against live scan models with sonographers and clinical scientists before rollout.",
       ],
       decisions: [
@@ -79,8 +79,8 @@ export const projects: Project[] = [
           body: "Keeping presets addressable by software version means no upgrade destroys prior state. That property is also what makes side-by-side comparison possible — you can't demo old against new if the old one was overwritten.",
         },
         {
-          title: "Batch processing for demo preparation",
-          body: "Sales engineers were configuring demo systems by hand. Batching preset preparation cut setup time by roughly 70% and made side-by-side demos practical rather than a special request.",
+          title: "Configuration management instead of file-by-file setup",
+          body: "Preparing a demo system meant tracking down individual preset files and applying them one at a time. Driving setup through managed configuration cut demo setup workflow time by roughly 70% and made a prepared system reproducible rather than hand-assembled.",
         },
       ],
       result:
@@ -92,12 +92,12 @@ export const projects: Project[] = [
     title: "Philips Delivery Tool",
     tagline: "One GUI for the entire preset delivery workflow — Git, PRs, docs, and array-level diffs.",
     description:
-      "A Python GUI that wraps the Git CLI and GitHub REST API to collapse preset delivery — branch, commit, push, PR, reviewer assignment, Change Set Document, preflight — into a single reviewed workflow, with index-specific diffs for array-based JSON parameters.",
+      "A Python GUI that wraps the Git CLI and GitHub REST API to collapse preset delivery — branch, commit, push, PR, reviewer assignment, Change Set Document, preflight — into a single reviewed workflow with index-specific diffs for array-based JSON parameters, cutting delivery time from roughly 8 hours to 1.5.",
     date: "June 2026",
     featured: true,
     proprietary: true,
     outcomes: [
-      { metric: "Hours/week", label: "Of admin work reclaimed" },
+      { metric: "8h → 1.5h", label: "Preset delivery time" },
       { metric: "Index-level", label: "Diffs for array parameters" },
       { metric: "One surface", label: "Replaces five tool context switches" },
     ],
@@ -105,7 +105,7 @@ export const projects: Project[] = [
     links: {},
     caseStudy: {
       problem:
-        "Once a transducer preset is optimized, the change has to land in the central repository for every ultrasound preset across transducers. Getting it there meant a long chain of manual steps: Git operations, a Change Set Document, a pull request, chasing approvals, then starting preflight. Engineers collectively lost hours every week to it. The same change was documented twice, once in the Change Set Document and again in the PR description. Reviewers were added by hand on every PR. And reviewing the change itself was the worst part — preset parameters live in large one- and multi-dimensional arrays, so standard diff tools report that a value changed without identifying which index it belongs to, leaving engineers counting array positions by hand.",
+        "Once a transducer preset is optimized, the change has to land in the central repository for every ultrasound preset across transducers. Getting it there meant a long chain of manual steps: Git operations, a Change Set Document, a pull request, chasing approvals, then starting preflight. A single delivery ran about 8 hours end to end, and engineers collectively lost hours every week to it. The same change was documented twice, once in the Change Set Document and again in the PR description. Reviewers were added by hand on every PR. And reviewing the change itself was the worst part — preset parameters live in large one- and multi-dimensional arrays, so standard diff tools report that a value changed without identifying which index it belongs to, leaving engineers counting array positions by hand.",
       approach: [
         "Built a Python GUI wrapping the Git CLI so branch creation, staging, commit, push, and pull all happen in one place.",
         "Integrated the GitHub REST API to fetch repo collaborators, assign reviewers automatically, open pull requests, detect when the approval threshold is met, and start preflight.",
@@ -135,7 +135,7 @@ export const projects: Project[] = [
         },
       ],
       result:
-        "Preset delivery went from a multi-tool chain to a single reviewed workflow. Engineers stopped counting array indices by hand, stopped writing the same change summary twice, and stopped manually assigning reviewers — while keeping approval over every step that requires judgment. The reclaimed hours went back to optimization work instead of administration.",
+        "Preset delivery dropped from roughly 8 hours to 1.5. Engineers stopped counting array indices by hand, stopped writing the same change summary twice, and stopped manually assigning reviewers — while keeping approval over every step that requires judgment. The reclaimed hours went back to optimization work instead of administration.",
     },
   },
   {
@@ -209,8 +209,9 @@ export const projects: Project[] = [
       approach: [
         "Built resume analysis that extracts skills and experience, then matches against relevant opportunities.",
         "Developed a Chrome extension so candidates get help on the job boards they already use, instead of a separate destination site.",
-        "Created a translation and auto-generation pipeline that converts foreign-language experience into polished U.S.-standard resumes.",
+        "Created a translation and auto-generation pipeline that converts foreign-language experience into ATS-friendly, U.S.-standard resumes.",
         "Integrated an AI chatbot for in-context questions during the application process.",
+        "Collaborated in an Agile team, using Git and GitHub for version control and project coordination.",
       ],
       decisions: [
         {
