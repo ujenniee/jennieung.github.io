@@ -120,7 +120,7 @@ export default function ResumePage() {
           </ResumeSection>
 
           <ResumeSection title="Projects">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-8">
               {projects.map((project) => (
                 <div key={project.slug}>
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4">
@@ -135,6 +135,22 @@ export default function ResumePage() {
                   <p className="mt-2 font-mono text-xs text-subtle-foreground">
                     {project.stack.join(" · ")}
                   </p>
+                  {project.caseStudy ? (
+                    <ul className="mt-3 flex flex-col gap-2">
+                      {project.caseStudy.approach.map((step) => (
+                        <li
+                          key={step.slice(0, 32)}
+                          className="relative pl-5 text-sm leading-relaxed text-muted-foreground"
+                        >
+                          <span
+                            aria-hidden
+                            className="absolute top-2 left-0 size-1.5 rounded-full bg-border-strong"
+                          />
+                          {step}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </div>
               ))}
             </div>

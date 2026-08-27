@@ -14,12 +14,12 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "backend-data",
     title: "Backend & Data",
-    skills: ["Node.js", "REST APIs", "SQL", "Database Design"],
+    skills: ["Node.js", "REST APIs", "Ollama API", "SQL", "Database Design"],
   },
   {
     id: "tools",
     title: "Tools & Workflow",
-    skills: ["Git", "GitHub", "VS Code"],
+    skills: ["Git", "GitHub", "GitHub REST API", "VS Code"],
   },
   {
     id: "design",
