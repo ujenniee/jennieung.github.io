@@ -5,8 +5,6 @@ export const siteConfig = {
   shortName: "Jennie",
   // Used in page titles, OG/Twitter cards, and the resume header.
   role: "Software Engineer & Designer",
-  summary:
-    "CS student at the University of Washington who builds tools for high-stakes environments — currently internal tooling for ultrasound imaging systems at Philips.",
   location: "Seattle, WA",
   email: "ujennie@uw.edu",
   // No custom domain yet — update this one constant if that changes.
@@ -14,6 +12,9 @@ export const siteConfig = {
   resumePath: "/jennie-ung-resume.pdf",
   githubUsername: "ujenniee",
 } as const;
+
+// Search snippets and link previews only — not rendered on the page.
+export const siteDescription = `${siteConfig.name} — ${siteConfig.role} based in ${siteConfig.location}.`;
 
 export const socialLinks: SocialLink[] = [
   {

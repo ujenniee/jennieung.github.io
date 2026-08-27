@@ -44,7 +44,6 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 76, fontWeight: 700, color: "#171717", letterSpacing: -2 }}>
             {siteConfig.name}
           </div>
-          <div style={{ marginTop: 20, fontSize: 38, color: "#666666" }}>{siteConfig.summary}</div>
         </div>
 
         <div
