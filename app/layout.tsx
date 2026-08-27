@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { siteConfig } from "@/data/site";
+import { siteConfig, siteDescription } from "@/data/site";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/layout/theme-provider";
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: `${siteConfig.name} — ${siteConfig.role}`,
     template: `%s — ${siteConfig.name}`,
   },
-  description: siteConfig.summary,
+  description: siteDescription,
   keywords: [
     "Jennie Ung",
     "software engineer",
@@ -41,12 +41,12 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.role}`,
-    description: siteConfig.summary,
+    description: siteDescription,
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.role}`,
-    description: siteConfig.summary,
+    description: siteDescription,
   },
   robots: {
     index: true,

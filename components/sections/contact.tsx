@@ -1,6 +1,5 @@
 import { Mail, MapPin } from "lucide-react";
 import { siteConfig, socialLinks } from "@/data/site";
-import { ContactForm } from "@/components/sections/contact-form";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/brand-icons";
 import { Card, CardBody } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
@@ -17,10 +16,10 @@ export function Contact() {
     <Section id="contact" muted>
       <SectionHeading title="Contact" />
 
-      <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
-        <Reveal className="h-full">
-          <Card className="h-full">
-            <CardBody className="flex h-full flex-col gap-6">
+      <div className="mt-12 flex justify-center">
+        <Reveal className="w-full max-w-xl">
+          <Card>
+            <CardBody className="flex flex-col gap-6">
               <div>
                 <h3 className="text-base font-semibold">Reach me directly</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -59,18 +58,10 @@ export function Contact() {
                 })}
               </ul>
 
-              <p className="mt-auto flex items-center gap-2 text-xs text-subtle-foreground">
+              <p className="flex items-center gap-2 text-xs text-subtle-foreground">
                 <MapPin className="size-3.5" />
                 Based in {siteConfig.location} · Open to relocation
               </p>
-            </CardBody>
-          </Card>
-        </Reveal>
-
-        <Reveal delay={0.1} className="h-full">
-          <Card className="h-full">
-            <CardBody>
-              <ContactForm />
             </CardBody>
           </Card>
         </Reveal>

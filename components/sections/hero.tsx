@@ -42,13 +42,6 @@ export function Hero() {
             {siteConfig.name}
           </motion.h1>
 
-          <motion.p
-            variants={item}
-            className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground"
-          >
-            {siteConfig.summary}
-          </motion.p>
-
           <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
             <Link href="/#projects" className={buttonStyles({ variant: "primary" })}>
               View my work
