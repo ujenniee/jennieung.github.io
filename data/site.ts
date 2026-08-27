@@ -6,7 +6,7 @@ export const siteConfig = {
   // Used in page titles, OG/Twitter cards, and the resume header.
   role: "Software Engineer & Designer",
   summary:
-    "CS student at the University of Washington. Currently building ultrasound imaging tools at Philips and teaching algorithms as an undergraduate TA.",
+    "CS student at the University of Washington who builds tools for high-stakes environments — currently internal tooling for ultrasound imaging systems at Philips.",
   location: "Seattle, WA",
   email: "ujennie@uw.edu",
   // No custom domain yet — update this one constant if that changes.
